@@ -1,18 +1,18 @@
 import React from 'react';
 
-/* Empty Array to store a variable TodoList */
+/* Array to store a variable TodoList */
 const todoList = [
   {
-    id: '1',
-    title: 'Complete assignment'
+    objectID: '0',
+    title: 'Complete assignment Lesson 1-1'
   },
   {
-    id: '2',
-    title: 'Lesson 1-1'
+    objectID: '1',
+    title: 'Upload it to GitHub'
   },
   {
-    id: '3',
-    title: 'JSX in React & Lists in React'
+    objectID: '2',
+    title: 'Submit it to Squibby'
   },
 ];
 
@@ -20,13 +20,15 @@ function App() {
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Todo List</h1>
+
+      {/* Rendering todo list */}
       <ul>
-        {/* Creating JavaScript expression to map todiList */}
-        {todoList.map(item => (
-          <li
-            key={item.id}>{item.title}
-          </li>
-        ))}
+        {todoList.map(function (listItem) {
+          return <li key={listItem.objectID}>
+              <span>{listItem.title}</span>
+            </li>
+          }
+        )}
       </ul>
     </div>
   );
