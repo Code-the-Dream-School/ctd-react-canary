@@ -24,8 +24,12 @@ function App() {
 
         <
         ul > {
-            list.map(function(item) {
-                return <li key = { item.objectId } > { item.tittle } < /li>;
+            todoList.map(function(listItem) {
+                return <li key = { listItem.objectId } >
+
+                    <
+                    span > { listItem.tittle } < /span> <
+                    /li> ;
 
 
             })
