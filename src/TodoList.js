@@ -1,5 +1,4 @@
 import React from 'react';
-import AddTodoForm from './AddTodoForm';
 
 const todoList = [
     {
@@ -17,10 +16,7 @@ const todoList = [
   ];
 
 function TodoList() {
-    return (
-        <div>
-            <h1>Todo List</h1>
-            <AddTodoForm />
+    return (       
             <ul>
                 {todoList.map(function (listItem) {
                     return (
@@ -30,7 +26,6 @@ function TodoList() {
                     );
                 })}
             </ul>
-        </div>
     );
 }
 
