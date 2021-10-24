@@ -8,8 +8,8 @@ import React from 'react';
    id: unique identifier (ex. 1, 2, 3)
    title: summary of the todo item (ex. "Complete assignment")
  */
-const todoList = [
-  {
+todoList = [
+- {
     id: 1,
     title: 'Complete homework assignment',
   },
