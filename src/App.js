@@ -1,29 +1,13 @@
 import React from "react";
+import TodoList from "./TodoList";
 
-let todoList = [
-  {
-    id: 1,
-    title: "complete assignment",
-  },
-  {
-    id: 2,
-    title: "Cook dinner",
-  },
-  {
-    id: 3,
-    title: "Do laundry",
-  },
-];
+
 
 function App() {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       <h1>Todo List</h1>
-      <ul>
-        {todoList.map((list) => (
-          <li key={list.id}> {list.title} </li>
-        ))}
-      </ul>
+      <TodoList />
     </div>
   );
 }
