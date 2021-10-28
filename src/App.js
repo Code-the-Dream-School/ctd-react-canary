@@ -1,4 +1,6 @@
 import React from 'react';
+import AddTodoForm from './AddTodoForm'
+import TodoList from './TodoList';
 
 // Above the App() function, create an empty Array and store it in a variable named todoList
 //const todoList = [];
@@ -31,22 +33,8 @@ function App() {
       {/* Create a level-one heading that says "Todo List" */}
       <h1>Todo List</h1>
 
-      {/* Create an unordered list (<ul>) */}
-      <ul>
-        {/**
-         * Inside your unordered list, insert a JavaScript expression (hint: {})
-           Inside the JavaScript expression, map over your todoList array
-           For each Object in the Array, return a list item (<li>) with the following:
-           key attribute with value of id property
-           inner text content with value of title property
-         */}
-
-         {todoList.map(function (item){
-           return (
-             <li key={item.id}>{item.title}</li>
-           );
-         })}
-      </ul>
+      <AddTodoForm />
+      <TodoList />
 
     </div>
   );
