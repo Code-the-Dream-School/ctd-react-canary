@@ -27,6 +27,7 @@ import React from 'react';
 
 function TodoList() {
     return (
+        {/* Create an unordered list (<ul>) */}
         <ul>
             {/**
                * Inside your unordered list, insert a JavaScript expression (hint: {})
@@ -42,7 +43,6 @@ function TodoList() {
                 );
             })}
         </ul>
-        
     );
 }
 
