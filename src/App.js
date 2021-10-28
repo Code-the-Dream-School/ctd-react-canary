@@ -9,7 +9,7 @@ import React from 'react';
    title: summary of the todo item (ex. "Complete assignment")
  */
 todoList = [
-- {
+ {
     id: 1,
     title: 'Complete homework assignment',
   },
