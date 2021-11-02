@@ -1,15 +1,25 @@
-import React from 'react'
+import React from "react";
 
 function AddTodoForm() {
+  const handleAddTodo = (event) => {
+    event.preventDefault();
+    let todoTitle = event.target.value;
+    console.log(event.submitter.value);
+  };
+
+  const handleChange = (event) => {
+    console.log(event.target.value)
+  }
+
   return (
     <div>
-      <form>
-        <label for="todoTitle">Title</label>
-        <input type="text" id="todoTitle" />
+      <form onSubmit= {handleAddTodo}>
+        <label htmlFor="todoTitle">Title</label>
+        <input type="text" id="todoTitle" name="title" onChange={handleChange} />
         <button type="submit">Add</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default AddTodoForm
+export default AddTodoForm;
