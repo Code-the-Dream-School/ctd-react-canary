@@ -1,37 +1,41 @@
 
 
+import React from 'react';
+import TodoListItem from './TodoListItem';
 
-
-const todoList = [
-    { 
+const list = [
+    {
         objectid : 1,
-        title :'finish lesson 1.2',
+        title :'Clean the home ',
     },
 
     {
         objectid : 2,
-        title :'uploud to Github',
+        title :'Do laundry',
     },
     
     {
         objectid : 3,
-        title :'sent the asignment link by squibbly',
+        title :'Play Game',
+    },
+    {
+        objectid : 4,
+        title : 'Read the react book',
     },
 
 
 ];
 
-
-function TodoList () {
-    return (
-            <ul>
-            {todoList.map(function(item) {
-                    return (
-                        <li key={item.objectid}>{item.title}</li>
-                    );
-                })}  
-            </ul>
-    );
-}
-
-export default TodoList;
+function TodoList(){
+    return(
+      <ul>
+          {list.map((item) => {
+            return (
+              <TodoListItem key={item.objectid} item={item}/>
+            )
+          })}
+        </ul>
+    )
+  }
+  
+  export default TodoList;
