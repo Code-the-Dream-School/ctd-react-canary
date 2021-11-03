@@ -1,4 +1,7 @@
 import React from 'react'; 
+import TodoListItem from './TodoListItem'; 
+// remember to always do the ./ for the path
+
   
 
 const todoList =[ 
@@ -28,25 +31,16 @@ const todoList =[
   }
 ]
 
-
 const TodoList = () =>{ 
     return( 
-      
-
-          <ul> 
+      <ul> 
         {todoList.map(function(item){ 
           return(
-            
-            <li key={item.id}> {/*you need a key because each item needs an excplicit key*/}
-              {item.title}
-            </li> 
- 
+            <TodoListItem key={item.id} todo={item}/>
+            // we are passing key as a prop equal to the id of the todo object and passing todo as a prop
           )
         })}
-
       </ul>
-
-
     )
 }
 
