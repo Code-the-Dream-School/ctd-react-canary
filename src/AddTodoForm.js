@@ -8,7 +8,7 @@ const AddTodoForm = (props)=> {
         let todoTitle =event.target.title.value;
         // this variable holds the value of the input. 
         console.log(todoTitle);
-       event.target.title.value ='' ;
+       event.target.title.value =' ' ;
     //    clearing the input value after submit
 
        props.onAddTodo(todoTitle);
