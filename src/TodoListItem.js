@@ -1,9 +1,9 @@
-import react from "react";
+import React from "react";
 function TodoListItem(props) {
-  console.log(props);
+console.log(props);
     return (
-         <li> {props.item.objectId}
-        <span> {props.item.tittle} </span>
+         <li> 
+        <span>{props.item.objectId} {props.item.tittle} </span>
             </li>
     );
 
