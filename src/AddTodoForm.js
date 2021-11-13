@@ -5,18 +5,15 @@ function AddTodoForm(props) {
         const todoTitle = event.target.title.value;
         props.setNewTodo(todoTitle);
         event.target.reset();
-       
-       
-    };
-
+       };
     return (
-        <form>
-            <label htmlFor="todoTitle">Tittle</label>
-            <input type="text" id="todoTitle" name="title" onSubmit = {handleAddTodo } onAddTodo = {setNewTodo}></input>
-         <button>Add</button>
-             
+        <form onSubmit={handleAddTodo}>        <label htmlFor="todoTitle">Tittle</label>
+            <input type="text" id="todoTitle" name="title" onChange={handleAddTodo}></input>
+         
+            <button type="submit">Add</button>
+         
         </form>
-
+  
     );
     
 }
