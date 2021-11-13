@@ -1,10 +1,11 @@
-import react from "react";
-function AddTodoForm() {
+import React from "react";
+function AddTodoForm(props) {
     const handleAddTodo = (event) => {
         event.preventDefault();
-        setNewTodo(event.target.value);
-        console.log(event.target.value);
-        handleAddTodo.remove()
+        const todoTitle = event.target.title.value;
+        props.setNewTodo(todoTitle);
+        event.target.reset();
+       
        
     };
 
