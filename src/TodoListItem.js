@@ -9,12 +9,12 @@
 
 import React from 'react';
 
-export default function TodoListItem(props) {
+export default function TodoListItem({title}) { //destructuring
 
     
     return (
         <div>
-            <li>{props.title}</li>
+            <li>{title}</li>
         </div>
     )
 }
