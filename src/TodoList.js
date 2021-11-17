@@ -1,22 +1,10 @@
 import * as React from "react";
 import TodoListItem from "./TodoListItem";
-const todoList = [
-  {
-    objectId: "1",
-    tittle: "Study the project",
-  },
-  {
-    objectId: "2",
-    tittle: "Watch Videos",
-  },
-  {
-    objectId: "3",
-    tittle: "Complete assignment",
-  },
-];
-function TodoList() {
+
+function TodoList({todoList}) {
+
     
-  return (
+ return (
     <ul>
    
       {todoList.map(function (item) {
