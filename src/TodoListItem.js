@@ -1,11 +1,11 @@
 import React from "react";
 
-function TodoListItem(props) {
+function TodoListItem({todoList}) {
   return (
     <ul>
-      {props.todoList.map((item) => (
+      {todoList.map((item) => (
         <li>
-          my id is:{item.id}my title is:{item.title}
+          My id is:{item.id}My title is: {item.title}
         </li>
       ))}
     </ul>
