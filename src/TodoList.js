@@ -3,10 +3,10 @@ import TodoListItem from './TodoListItem';
 
 
 
-function TodoList({todoList}) {
+function TodoList({todoList, onRemoveTodo}) {
     return (
         
-           <TodoListItem key={todoList.id} todoList={todoList}/>
+           <TodoListItem onRemoveTodo={onRemoveTodo} key={todoList.id} todoList={todoList}/>
         
     )
 }
