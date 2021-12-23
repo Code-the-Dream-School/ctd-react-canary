@@ -2,11 +2,11 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 
 function TodoList({ todoList }) {
-  let todos = todoList;
-  console.log(todos)
+  // let todos = todoList;
+  // console.log(todos)
   return (
     <ul>
-      {todos.map((list) => (
+      {todoList.map((list) => (
         <TodoListItem key={list.id} todo={list.title} />
       ))}
     </ul>
