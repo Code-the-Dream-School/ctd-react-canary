@@ -5,7 +5,7 @@ import TodoList from "./TodoList";
 function App() {
   const useSemiPersistentState = (key, initialState) => {
     const [value, setValue] = useState(
-      JSON.parse(localStorage.getItem(key) || initialState)
+      JSON.parse(localStorage.getItem(key)) || initialState
     );
 
     useEffect(() => {
