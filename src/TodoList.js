@@ -19,13 +19,13 @@ import TodoListItem from './TodoListItem';
 
 function TodoList(props) {
 
-  const {todoList} = props; //destructuring
+  const {todoList, onRemoveTodo} = props; //destructuring
 
     return(
         <div>
             <ul style={{ listStyle: 'none' }} >
                 {todoList.map(function (item){
-                    return (<TodoListItem key={item.id} title={item.title} />)
+                    return (<TodoListItem key={item.id} title={item.title} onRemoveTodo={onRemoveTodo} />)
                 })}   
             </ul>
         </div>

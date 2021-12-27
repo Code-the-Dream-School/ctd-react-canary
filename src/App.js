@@ -2,6 +2,7 @@ import React from 'react';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 
+
 //React Custom Hook
 const useSemiPersistentState = () => {
   
@@ -21,6 +22,18 @@ function App() {
   // const [newTodo, setNewTodo] = React.useState('');
   const [todoList, setTodoList] = useSemiPersistentState();
 
+  // const removeTodo = (id) => {
+  //    //todoListItem
+  //   setTodoList([...todoList.filter((item) => {
+  //     return item.id !==id;
+  //   })])
+  // }
+
+  const removeTodo = (id) => {
+		const filteredList = todoList.filter((todoListItem) => todoListItem.id !== id);
+		setTodoList(filteredList);
+	}
+
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo])
   };
@@ -33,7 +46,7 @@ function App() {
       {/* <p>
         New todo: {newTodo}  
       </p> */}
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 }
