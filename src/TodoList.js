@@ -25,7 +25,7 @@ function TodoList(props) {
         <div>
             <ul style={{ listStyle: 'none' }} >
                 {todoList.map(function (item){
-                    return (<TodoListItem key={item.id} title={item.title} onRemoveTodo={onRemoveTodo} />)
+                    return (<TodoListItem key={item.id} title={item.title} item={item} onRemoveTodo={onRemoveTodo} />)
                 })}   
             </ul>
         </div>

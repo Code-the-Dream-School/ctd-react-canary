@@ -9,7 +9,7 @@
 
 import React from 'react';
 
-function TodoListItem({title, item, id, onRemoveTodo}) { //destructuring
+function TodoListItem({title, item, onRemoveTodo}) { //destructuring
 
     
     return (
