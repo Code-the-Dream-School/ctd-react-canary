@@ -1,26 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 
 
 //React Custom Hook
-const useSemiPersistentState = () => {
+// const useSemiPersistentState = () => {
   
-  const [todoList, setTodoList] = React.useState(
-    JSON.parse(localStorage.getItem('savedTodoList') || '[]') 
-  );
+//   const [todoList, setTodoList] = React.useState(
+//     JSON.parse(localStorage.getItem('savedTodoList') || '[]') 
+//   );
 
-  React.useEffect(() => {
-    localStorage.setItem('savedTodoList', JSON.stringify(todoList));
-  }, [todoList]);
+//   React.useEffect(() => {
+//     localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+//   }, [todoList]);
 
-  return [todoList, setTodoList];
+//   return [todoList, setTodoList];
   
-};
+// };
+
 
 function App() {
   // const [newTodo, setNewTodo] = React.useState('');
-  const [todoList, setTodoList] = useSemiPersistentState();
+  // const [todoList, setTodoList] = useSemiPersistentState();
 
   // const removeTodo = (id) => {
   //    //todoListItem
@@ -28,6 +29,27 @@ function App() {
   //     return item.id !==id;
   //   })])
   // }
+  const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+      new Promise((resolve, reject) => {
+      setTimeout(
+        () => resolve({ data: { todoList: JSON.parse(localStorage.getItem('savedTodoList') ) } }),
+        2000)
+      })
+      .then((result) => {
+        setTodoList (result.data.todoList);
+        setIsLoading(false);
+        }); 
+  }, []);
+  
+  useEffect(() => {
+    if (isLoading === false) {
+      localStorage.setItem('savedTodoList', JSON.stringify(todoList));
+    }
+  }, [isLoading, todoList]);
+
 
   const removeTodo = (id) => {
 		const filteredList = todoList.filter((todoListItem) => todoListItem.id !== id);
@@ -46,7 +68,12 @@ function App() {
       {/* <p>
         New todo: {newTodo}  
       </p> */}
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      
+      {isLoading ? (
+        <p>Loading ...</p>
+        ) : (
+          <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        )}
     </>
   );
 }
