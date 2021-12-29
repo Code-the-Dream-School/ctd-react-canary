@@ -2,21 +2,6 @@ import React from 'react';
 import TodoListItem from './TodoListItem';
 
 
-// let todoList = [
-//     {
-//       id: 1,
-//       title: "Dance"
-//     },
-//     {
-//       id: 2,
-//       title: "Sing"
-//     },
-//     {
-//       id: 3,
-//       title: "Celebrate"
-//     }
-//   ];
-
 function TodoList(props) {
 
   const {todoList, onRemoveTodo} = props; //destructuring
