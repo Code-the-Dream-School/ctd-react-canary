@@ -3,6 +3,10 @@ import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 
 
+const REACT_APP_AIRTABLE_API_KEY = process.env.REACT_APP_AIRTABLE_API_KEY;
+
+const REACT_APP_AIRTABLE_BASE_ID = process.env.REACT_APP_AIRTABLE_BASE_ID;
+
 //React Custom Hook
 // const useSemiPersistentState = () => {
   
@@ -33,15 +37,58 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-      new Promise((resolve, reject) => {
-      setTimeout(
-        () => resolve({ data: { todoList: JSON.parse(localStorage.getItem('savedTodoList') ) } }),
-        2000)
-      })
+      // new Promise((resolve, reject) => {
+      // setTimeout(
+      //   () => resolve({ data: { todoList: JSON.parse(localStorage.getItem('savedTodoList') ) } }),
+      //   2000)
+      // })
+    fetch(`https://api.airtable.com/v0/${REACT_APP_AIRTABLE_BASE_ID}/Default`, {
+      method: 'GET',
+      headers: {
+        'Authorization':  `Bearer ${REACT_APP_AIRTABLE_API_KEY}`
+      }
+    })
+      .then((response) => response.json())
       .then((result) => {
-        setTodoList (result.data.todoList);
+        console.log(result);
+        // const dummyResponse = {
+        //   records: [
+        //     {
+        //       createdTime: "",
+        //       fields: {
+        //         Title: " Be happy"
+        //       },
+        //       id: "1"
+        //     }
+        //   ],
+        // }
+
+        const airTabletodoList = [];
+
+        for (const record of result.records) {
+          //convert records to todo list
+          const todoListItem = {
+            title: record.fields.Title,
+            id: record.id
+          }
+          //add to airTabketodoList
+          airTabletodoList.push(todoListItem);
+        }
+
+
+        // setTodoList ({
+        //   type: 'TODO_LIST_FETCH_SUCCESS',
+        //   payload: result.records
+        //   //result.data.todoList
+        //   });
+        setTodoList(airTabletodoList)
         setIsLoading(false);
-        }); 
+        })
+      .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        }
+      );
   }, []);
   
   useEffect(() => {
