@@ -5,7 +5,7 @@ function TodoListItem({ todoList, onRemoveTodo }) {
     <ul>
       {todoList.map((item) => (
         <li>
-          My id is:{item.id}My title is: {item.title}
+          My id is: {item.id}My title is: {item.title}
           <button
             onClick={() => {
               onRemoveTodo(item.id);
