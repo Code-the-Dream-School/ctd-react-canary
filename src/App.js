@@ -1,12 +1,12 @@
 import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 //console.log(localStorage);
 //React.useEffect(() => {
 //setTodoList(JSON.parse(localStorage.getItem("savedTodoList")));
 //}, []);
-console.log(process.env)
+console.log(process.env);
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -21,10 +21,9 @@ function App() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result.records)
+        console.log(result.records);
         setTodoList(result.records);
         setIsLoading(false);
-        
       });
   }, []);
 
@@ -44,11 +43,19 @@ function App() {
   };
   return (
     <>
-      <h1>Todo List</h1>
-      {isLoading ? <p>Loading...</p> : [TodoList]}
-      <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
-      <AddTodoForm onAddTodo={addTodo} />
-      <p></p>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={
+            <>
+            <h1>Todo List</h1>
+            {isLoading ? <p>Loading...</p> : [TodoList]}
+            <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
+            <AddTodoForm onAddTodo={addTodo} />
+            <p></p>
+            </>
+          } ></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
