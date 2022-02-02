@@ -2,7 +2,7 @@ import * as React from "react";
 import TodoListItem from "./TodoListItem";
 
 function TodoList(props) {
-
+console.log(props.todoList);
 
   return (
     <ul>

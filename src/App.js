@@ -17,11 +17,13 @@ function App() {
 
         }
       })
-      .then(fetchStatus)  
-      .then(json)  
-      .then(function(){                                    
-        result.records();
+      .then((fetchStatus) => fetchStatus.json())
 
+      .then(function (result) {
+        console.log(result);
+        setTodoList(result.records);
+        setIsLoading(false);
+      })
   }, [])
 
   useEffect(() => {
@@ -54,9 +56,9 @@ function App() {
               <TodoList todoList={todoList}
                 onRemoveTodo={removeTodo} />}</>
         } />
-              <Route path="/" exact element={
-              <h3>New Todo List</h3>
-              }/>
+        <Route path="/" exact element={
+          <h3>New Todo List</h3>
+        } />
       </Routes>
     </BrowserRouter>
   );
