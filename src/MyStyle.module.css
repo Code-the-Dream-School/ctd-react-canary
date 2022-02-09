@@ -1,0 +1,20 @@
+.myFlex
+{
+    
+    display: inline-block;
+    align-items: center;
+    padding: 10px;
+    border: 10px;
+    width: 10px;
+    border:rgb(255, 255, 255)
+    
+    
+    
+}
+.spacing{
+    margin: 1px;
+    padding: 2px;
+    border-radius: 5px;
+    color:crimson;
+    
+}

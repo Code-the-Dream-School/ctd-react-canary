@@ -1,0 +1,12 @@
+.ListItem
+{
+ color:rgb(200, 255, 0);
+    
+}
+.spacing{
+    margin: 10px;
+    padding: 2px;
+    border-radius: 50px;
+    color:crimson;
+    background-color: cyan;
+}

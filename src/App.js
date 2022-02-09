@@ -2,6 +2,8 @@ import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import style from "./MyStyle.module.css"
+//import Media from "react-media"
 //console.log(localStorage);
 //React.useEffect(() => {
 //setTodoList(JSON.parse(localStorage.getItem("savedTodoList")));
@@ -47,11 +49,13 @@ function App() {
         <Routes>
           <Route exact path="/" element={
             <>
+            <div className={style.myFlex}>
             <h1>Todo List</h1>
             {isLoading ? <p>Loading...</p> : [TodoList]}
             <TodoList onRemoveTodo={removeTodo} todoList={todoList} />
             <AddTodoForm onAddTodo={addTodo} />
             <p></p>
+            </div>
             </>
           } ></Route>
         </Routes>
