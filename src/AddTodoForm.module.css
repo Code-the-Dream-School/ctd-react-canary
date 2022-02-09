@@ -1,0 +1,16 @@
+.addForm {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+}
+
+.addButton {
+	background-color: #bb6464;
+	border: none;
+	color: #f7ecde;
+	border-radius: 5px;
+	/* font-family: "Patrick Hand", cursive; */
+	font-weight: 900;
+	font-size: 1em;
+	padding: 0 0.5em;
+}
