@@ -1,14 +1,18 @@
+
+
 .header1{
-color:rgb(184, 181, 177);}
+color:rgb(14, 8, 1);}
 body{
     background-color: rgb(237, 230, 243);
    padding:10px 20px 10px 20px;
    margin: 5px 5px 0px 0px;
    background-color: lightgray;
+   text-align-last: center;
 }
 p,li,h1,h2,h3{
- color: coral;
+ color: rgb(247, 72, 9);
  font-family: 'Times New Roman', Times, serif;
+ text-align-last: center;
 }
 input{
     font-family: Verdana, Geneva, Tahoma, sans-serif;

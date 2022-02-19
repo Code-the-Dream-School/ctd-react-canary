@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
+import propTypes from "prop-types";
 
 const InputWithLabel = (props) => {
     const inputRef = useRef();
@@ -9,6 +9,10 @@ const InputWithLabel = (props) => {
             console.log(props.todoTitle);
         }
     }, [props.todoTitle]);
+
+    InputWithLabel.propTypes={
+        props: propTypes.string
+    }
 
     return (
         <>  <label htmlFor="todoTitle">
