@@ -19,7 +19,7 @@ function App() {
     .then((result) => 
     {
       setIsLoading(false);
-      setTodoList(result.records);
+      setTodoList([...result.records]);
 
     })
 
@@ -47,14 +47,14 @@ function App() {
     return (
       <BrowserRouter>
       <Routes>
-        <Route path = "/" Element={
-      <>
+       <Route path = "/" element={
+      <div>
         <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
         {isLoading ? ( <p>Loading...</p> ):(
           <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
         )}
-      </>
+      </div>
         }
         ></Route>
         <Route path="/new" element={<h1>NEW TODO LIST</h1>}></Route>
