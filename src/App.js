@@ -1,6 +1,6 @@
 import React from "react";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import AddTodoForm from "./components/AddTodoForm";
+import TodoList from "./components/TodoList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import style from "./MyStyle.module.css"
 //import Media from "react-media"

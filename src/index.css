@@ -1,20 +1,26 @@
 body {
   margin: 0;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:blueviolet
-  
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(5, 0, 92) -10%,
+    rgba(68, 0, 255, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+    
+    
+    
+  );
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-@media only screen and (max-width:500px) {
-  html{
-      font-size: .5rem;
-
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 0.5rem;
   }
-  
 }
