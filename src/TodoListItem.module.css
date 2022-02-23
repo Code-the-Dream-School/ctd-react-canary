@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Fruktur&family=Patrick+Hand&display=swap");
+
+:root {
+	--primary-text-color: #54bab9;
+	--bg-color-main: #f7ecde;
+	--secondary-text-color: #bb6464;
+}
+
+.listItem {
+	color: var(--primary-text-color);
+	list-style-type: none;
+}
+
+.listContainer {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	margin: 1em;
+}
+
+body {
+	background-color: var(--bg-color-main);
+	color: var(--secondary-text-color);
+	font-family: "Patrick Hand", cursive;
+	display: flex;
+	justify-content: center;
+	font-size: 1.5rem;
+	height: 100vh;
+	align-items: center;
+}
+
+.removeButton {
+	background-color: #395b64;
+	color: #f7ecde;
+	border-radius: 5px;
+	font-size: 1rem;
+	font-family: "Patrick Hand", cursive;
+	border: none;
+	padding: 0 1em;
+}
+
+@media (max-width: 900px) {
+	html {
+		font-size: 20px;
+	}
+}
+@media (max-width: 350px) {
+	html {
+		font-size: 14px;
+	}
+}
