@@ -1,6 +1,8 @@
 
 
 import React from 'react'
+import style from "./TodoListItem.module.css";
+
 
 function TodoListItem({id, title, onRemoveTodo}) {
   const headleRemoveTodo = (e) => {
@@ -9,7 +11,8 @@ function TodoListItem({id, title, onRemoveTodo}) {
   return (
       <li key="{id}">
         {title}
-      <button onClick={headleRemoveTodo}>Remove</button>
+      <button 
+      class={style.removeButton}onClick={headleRemoveTodo}>Remove</button>
   </li>
   );
 }

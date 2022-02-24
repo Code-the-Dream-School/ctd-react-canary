@@ -47,7 +47,7 @@ function App() {
     return (
       <BrowserRouter>
       <Routes>
-        <Route path = "/" Element={
+        <Route path = "/" element={
       <>
         <h1>Todo List</h1>
         <AddTodoForm onAddTodo={addTodo} />
