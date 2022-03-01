@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const baseId = process.env.REACT_APP_AIRTABLE_BASE_ID;
     const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
-    fetch(`https://api.airtable.com/v0/${baseId}/Default`,
+    fetch(`https://api.airtable.com/v0/${baseId}/Default?view=Grid%20view`,
       {
         headers: {
           authorization: `Bearer ${apiKey}`
@@ -33,6 +33,7 @@ function App() {
     }
   }, [todoList]
   )
+
 
 
 
