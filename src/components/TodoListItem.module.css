@@ -25,10 +25,11 @@ body{
 h1{
     text-align: center;
     margin-top: 150px;
-    font-size: 8em;
+    font-size: 8.5em;
     font-family: "Booter - Zero Zero";
     font-weight:Normal;
     color: white;
+    margin-bottom:20px;
 }
 
 
@@ -49,6 +50,10 @@ li{
     font-family: sans-serif;
     padding: 1% 1%;
     margin: 0% 1%;
+    list-style: none;
+    
+   
+  
 }
 
 
