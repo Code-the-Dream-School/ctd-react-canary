@@ -1,0 +1,47 @@
+
+
+.header1{
+color:rgb(14, 8, 1);}
+body{
+    background-color: rgb(237, 230, 243);
+   padding:10px 20px 10px 20px;
+   margin: 5px 5px 0px 0px;
+   background-color: lightgray;
+   text-align-last: center;
+}
+p,li,h1,h2,h3{
+ color: rgb(247, 72, 9);
+ font-family: 'Times New Roman', Times, serif;
+ text-align-last: center;
+}
+input{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.3em;
+    background-color: rgb(206, 235, 206);
+    color: darkorange;
+    border: 0;
+    margin:10px 15px 5px 0px;
+    padding:3px 4px 8px 8px;
+}
+button{
+    background-color: darkseagreen;
+    border:0;
+    color:blue;
+    display: inline-block;
+    height: auto;
+    padding:4px 8px 4px 8px;
+    margin:10px 0px 5px 15px;
+    
+}
+@media screen and (min-width:480px) {
+    button{
+        display:inline-block;
+    }
+    
+}
+@media screen and (max-width:480px) {
+    button{
+        display:block;
+    }
+    
+}
