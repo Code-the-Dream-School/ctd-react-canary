@@ -3,14 +3,16 @@ import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import style from "./App.module.css";
-
+import Airtable from "airtable";
 function App() {
 
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const baseId = process.env.REACT_APP_AIRTABLE_BASE_ID;
+  const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
+  const base = new Airtable({ apiKey: apiKey }).base(baseId);
+
   useEffect(() => {
-    const baseId = process.env.REACT_APP_AIRTABLE_BASE_ID;
-    const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
     fetch(`https://api.airtable.com/v0/${baseId}/Default?view=Grid%20view`,
       {
         headers: {
@@ -39,6 +41,18 @@ function App() {
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
+    base('Default').create([
+      newTodo
+
+    ], function (err, records) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      records.forEach(function (record) {
+        console.log(record.getId());
+      });
+    });
 
   }
   const removeTodo = (id) => {
@@ -47,6 +61,7 @@ function App() {
     })
     setTodoList(updatedNewTodo);
   }
+  console.log(todoList);
   return (
     <BrowserRouter>
       <Routes>

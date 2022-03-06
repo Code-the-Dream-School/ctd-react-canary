@@ -12,12 +12,12 @@ function AddTodoForm({ onAddTodo }) {
     }
     const handleAddTodo = (event) => {
         event.preventDefault();
-        onAddTodo({ title: todoTitle, id: Date.now() });
+        onAddTodo({ fields:{Title: todoTitle} });
 
         setTodoTitle('');
     };
-    AddTodoForm.propTypes={
-        onAddTodo:propTypes.string
+    AddTodoForm.propTypes = {
+        onAddTodo: propTypes.func
     }
 
     return (
