@@ -4,8 +4,7 @@ import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
 
-const URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default`;
-
+const URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
 function App() {
 	const [todoList, setTodoList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +19,11 @@ function App() {
 			})
 				.then((response) => response.json())
 				.then((result) => {
+					console.log(result.records);
+					result.records.sort((objectA, objectB) =>
+						objectB.fields.Title.localeCompare(objectA.fields.Title)
+					);
+					console.log(result.records);
 					setTodoList([...result.records]);
 					setIsLoading(false);
 				}),
