@@ -8,6 +8,7 @@ const URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_I
 function App() {
 	const [todoList, setTodoList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [isAscending, setIsAscending] = useState(true);
 
 	useEffect(
 		() =>
@@ -20,8 +21,8 @@ function App() {
 				.then((response) => response.json())
 				.then((result) => {
 					console.log(result.records);
-					result.records.sort((objectA, objectB) =>
-						objectB.fields.Title.localeCompare(objectA.fields.Title)
+					result.records.sort((a, b) =>
+						a.fields.Title.localeCompare(b.fields.Title)
 					);
 					console.log(result.records);
 					setTodoList([...result.records]);
@@ -44,6 +45,19 @@ function App() {
 		const filteredTodos = todoList.filter((item) => item.id !== id);
 		setTodoList(filteredTodos);
 	}
+	function handleToggleSort() {
+		setIsAscending(!isAscending);
+	}
+
+	useEffect(() => {
+		if (isLoading) return;
+		todoList.sort((a, b) => {
+			return isAscending
+				? b.fields.Title.localeCompare(a.fields.Title)
+				: a.fields.Title.localeCompare(b.fields.Title);
+		});
+		setTodoList(todoList);
+	}, [isAscending, isLoading, todoList]);
 
 	return (
 		<BrowserRouter>
@@ -53,11 +67,23 @@ function App() {
 					element={
 						<div className={styles.mainContainer}>
 							<h1>My Todo List</h1>
-							<AddTodoForm onAddTodo={addTodo} />
+							<AddTodoForm
+								onAddTodo={addTodo}
+								todoList={todoList}
+								setTodoList={setTodoList}
+							/>
 							{isLoading ? (
 								<p>Loading..</p>
 							) : (
-								<TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+								<>
+									<button
+										className={styles.btnToggle}
+										onClick={handleToggleSort}
+									>
+										{isAscending ? "Z - A" : "A - Z"}
+									</button>
+									<TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+								</>
 							)}
 						</div>
 					}

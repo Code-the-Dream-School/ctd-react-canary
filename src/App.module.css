@@ -4,3 +4,12 @@
 	align-items: center;
 	justify-content: center;
 }
+
+.btnToggle {
+	margin-top: 20px;
+	background-color: #fff;
+	border: 1px solid #54bab9;
+	border-radius: 5px;
+	padding: 3px 10px;
+	cursor: pointer;
+}
