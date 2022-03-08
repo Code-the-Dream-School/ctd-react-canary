@@ -37,15 +37,20 @@ body {
 	font-family: "Patrick Hand", cursive;
 	border: none;
 	padding: 0 1em;
+	height: 30px;
+	margin: auto 0;
 }
 
 @media (max-width: 900px) {
 	html {
-		font-size: 20px;
+		font-size: 24px;
 	}
 }
 @media (max-width: 350px) {
 	html {
 		font-size: 14px;
+	}
+	body {
+		padding: 3rem;
 	}
 }

@@ -13,3 +13,13 @@
 	padding: 3px 10px;
 	cursor: pointer;
 }
+
+.btnToggle:hover {
+	border-bottom: 1.5px solid #54bab9;
+}
+
+@media only screen and (max-width: 400px) {
+	.mainContainer {
+		padding-top: 6rem;
+	}
+}
