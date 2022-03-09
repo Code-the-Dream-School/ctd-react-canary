@@ -27,6 +27,27 @@ function App() {
         setTodoList(result.records);
         setIsLoading(false);
       })
+    // base('Default').select({
+    //   // Selecting the first 3 records in Grid view:
+    //   //maxRecords:3,
+    //   view: "Grid view"
+    // }).eachPage(function page(records, fetchNextPage) {
+    //   // This function (`page`) will get called for each page of records.
+
+    //   records.forEach(function (record) {
+    //     console.log('Retrieved', record.get('Title'));
+  
+    //   });
+
+    //   // To fetch the next page of records, call `fetchNextPage`.
+    //   // If there are more records, `page` will get called again.
+    //   // If there are no more records, `done` will get called.
+    //   fetchNextPage();
+
+    // }, function done(err) {
+    //   if (err) { console.error(err); return; }
+    // });
+
   }, [])
 
   useEffect(() => {
@@ -40,7 +61,7 @@ function App() {
 
 
   const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
+    //setTodoList([...todoList, newTodo]);
     base('Default').create([
       newTodo
 
@@ -52,16 +73,37 @@ function App() {
       records.forEach(function (record) {
         console.log(record.getId());
       });
+      setTodoList([...todoList,records[0]]);
     });
 
   }
   const removeTodo = (id) => {
-    const updatedNewTodo = todoList.filter((item) => {
-      return item.id !== id;
-    })
-    setTodoList(updatedNewTodo);
+    //setTodoList([...todoList,id]);
+    console.log(id);
+    // const updatedNewTodo = todoList.filter((item) => {
+    //   return item.id !== id;
+    // })
+    // setTodoList(updatedNewTodo);
+    base('Default').destroy([
+      id
+    ], function(err, deletedRecords) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      const updatedNewTodo = todoList.filter((item) => {
+          return item.id !== id;
+        })
+        setTodoList(updatedNewTodo);
+      console.log(deletedRecords.length, deletedRecords,);
+    });
+
+
   }
-  console.log(todoList);
+  //console.log(todoList);
+
+
+  
   return (
     <BrowserRouter>
       <Routes>

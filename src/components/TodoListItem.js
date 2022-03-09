@@ -3,12 +3,10 @@ import React from "react";
 import style from './TodoListItem.module.css';
 
 function TodoListItem(props) {
-
-TodoListItem.propTypes={
-    props:propTypes.string
-}
 //console.log(props.item);
-
+TodoListItem.propTypes={
+    props:propTypes.func
+}
 
     return (
         <li className={style.ListItem}>
