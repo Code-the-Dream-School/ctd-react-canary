@@ -3,32 +3,45 @@ import TodoList from "./components/TodoList";
 import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.css";
+import Airtable from "airtable";
 
-const URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`;
 function App() {
 	const [todoList, setTodoList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isAscending, setIsAscending] = useState(true);
 
+	const base = new Airtable({ apiKey: "keyaxii9U7Wi2Ms9d" }).base(
+		"appS9iGsNpgEdTi9u"
+	);
 	useEffect(
 		() =>
-			fetch(URL, {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
-				},
-			})
-				.then((response) => response.json())
-				.then((result) => {
-					console.log(result.records);
-					result.records.sort((a, b) =>
-						a.fields.Title.localeCompare(b.fields.Title)
-					);
-					console.log(result.records);
-					setTodoList([...result.records]);
-					setIsLoading(false);
-				}),
-		[]
+			base("Default")
+				.select({
+					view: "Grid view",
+				})
+				.eachPage(
+					function page(records, fetchNextPage) {
+						// This function (`page`) will get called for each page of records.
+						setIsLoading(false);
+						records.sort((a, b) => {
+							return isAscending
+								? a.fields.Title.localeCompare(b.fields.Title)
+								: b.fields.Title.localeCompare(a.fields.Title);
+						});
+						console.log(records);
+						console.log(isAscending);
+						console.log(base);
+						setTodoList([...records]);
+						fetchNextPage();
+					},
+					function done(err) {
+						if (err) {
+							console.error(err);
+							return;
+						}
+					}
+				),
+		[isLoading, isAscending]
 	);
 
 	useEffect(() => {
@@ -42,22 +55,19 @@ function App() {
 	}
 
 	function removeTodo(id) {
+		base("Default").destroy(id, function (err, deletedRecords) {
+			if (err) {
+				console.error(err);
+				return;
+			}
+			console.log("Deleted", deletedRecords.length, "records");
+		});
 		const filteredTodos = todoList.filter((item) => item.id !== id);
 		setTodoList(filteredTodos);
 	}
 	function handleToggleSort() {
 		setIsAscending(!isAscending);
 	}
-
-	useEffect(() => {
-		if (isLoading) return;
-		todoList.sort((a, b) => {
-			return isAscending
-				? b.fields.Title.localeCompare(a.fields.Title)
-				: a.fields.Title.localeCompare(b.fields.Title);
-		});
-		setTodoList(todoList);
-	}, [isAscending, isLoading, todoList]);
 
 	return (
 		<BrowserRouter>

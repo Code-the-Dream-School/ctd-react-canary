@@ -5,12 +5,26 @@
 }
 
 .addButton {
-	background-color: #bb6464;
+	background-color: var(--primary-text-color);
 	border: none;
-	color: #f7ecde;
+	color: var(--button-color);
 	border-radius: 5px;
-	/* font-family: "Patrick Hand", cursive; */
+	cursor: pointer;
 	font-weight: 900;
 	font-size: 1em;
 	padding: 0 0.5em;
+}
+.addButton:hover {
+	background-color: var(--bg-color-main);
+	color: var(--primary-text-color);
+}
+
+@media only screen and (max-width: 400px) {
+	.addForm {
+		flex-direction: column;
+	}
+	.addButton {
+		width: 30%;
+		margin: 0 auto;
+	}
 }

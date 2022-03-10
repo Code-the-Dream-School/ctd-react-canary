@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Fruktur&family=Patrick+Hand&display=swap");
 
 :root {
-	--primary-text-color: #54bab9;
-	--bg-color-main: #f7ecde;
-	--secondary-text-color: #bb6464;
+	--primary-text-color: #1b1a17;
+	--bg-color-main: rgb(240, 165, 0, 0.7);
+	--secondary-text-color: #e45826;
+	--button-color: rgb(240, 165, 0);
 }
 
 .listItem {
@@ -20,7 +21,7 @@
 
 body {
 	background-color: var(--bg-color-main);
-	color: var(--secondary-text-color);
+	color: var(--primary-text-color);
 	font-family: "Patrick Hand", cursive;
 	display: flex;
 	justify-content: center;
@@ -30,8 +31,8 @@ body {
 }
 
 .removeButton {
-	background-color: #395b64;
-	color: #f7ecde;
+	background-color: var(--primary-text-color);
+	color: var(--button-color);
 	border-radius: 5px;
 	font-size: 1rem;
 	font-family: "Patrick Hand", cursive;
@@ -39,6 +40,12 @@ body {
 	padding: 0 1em;
 	height: 30px;
 	margin: auto 0;
+	cursor: pointer;
+}
+
+.removeButton:hover {
+	background-color: var(--bg-color-main);
+	color: var(--primary-text-color);
 }
 
 @media (max-width: 900px) {
@@ -49,8 +56,5 @@ body {
 @media (max-width: 350px) {
 	html {
 		font-size: 14px;
-	}
-	body {
-		padding: 3rem;
 	}
 }

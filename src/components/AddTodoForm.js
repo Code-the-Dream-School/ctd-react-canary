@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
 import styles from "./AddTodoForm.module.css";
 import PropTypes from "prop-types";
+import { uuid } from "uuidv4";
+import Airtable from "airtable";
+
+var base = new Airtable({ apiKey: "keyaxii9U7Wi2Ms9d" }).base(
+	"appS9iGsNpgEdTi9u"
+);
 
 function AddTodoForm({ onAddTodo }) {
 	const [todoTitle, setTodoTitle] = useState();
@@ -17,7 +23,19 @@ function AddTodoForm({ onAddTodo }) {
 
 	function handleAddTodo(e) {
 		e.preventDefault();
-		onAddTodo({ title: todoTitle, id: Date.now() });
+		base("Default").create(
+			[{ fields: { Title: todoTitle } }],
+			function (err, records) {
+				if (err) {
+					console.error(err);
+					return;
+				}
+				records.forEach(function (record) {
+					console.log(record.getId());
+				});
+			}
+		);
+		onAddTodo({ fields: { Title: todoTitle }, id: uuid() });
 		setTodoTitle("");
 	}
 
@@ -29,7 +47,7 @@ function AddTodoForm({ onAddTodo }) {
 					todoTitle={todoTitle}
 					handleTitleChange={handleTitleChange}
 				>
-					Title {""}
+					{/* Title {""} */}
 				</InputWithLabel>
 				<button className={styles.addButton}>+</button>
 			</form>
