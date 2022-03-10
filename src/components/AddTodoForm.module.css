@@ -13,6 +13,7 @@
 	font-weight: 900;
 	font-size: 1em;
 	padding: 0 0.5em;
+	transition: background-color 0.5s ease-in-out;
 }
 .addButton:hover {
 	background-color: var(--bg-color-main);

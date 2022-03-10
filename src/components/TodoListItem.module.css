@@ -41,6 +41,7 @@ body {
 	height: 30px;
 	margin: auto 0;
 	cursor: pointer;
+	transition: background-color 0.5s ease-in-out;
 }
 
 .removeButton:hover {

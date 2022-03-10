@@ -14,6 +14,7 @@
 	padding: 3px 10px;
 	cursor: pointer;
 	font-family: "Patrick Hand", cursive;
+	transition: background-color 0.5s ease-in-out;
 }
 
 .btnToggle:hover {
