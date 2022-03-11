@@ -70,7 +70,7 @@ function App() {
 	}
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename="https://suheylacetin-todoapp.web.app">
 			<Routes>
 				<Route
 					path="/"
