@@ -1,0 +1,11 @@
+.todoList {
+	height: 300px;
+	overflow: auto;
+	/* margin: 0 auto; */
+}
+
+@media only screen and (min-width: 600px) {
+	.todoList {
+		width: 500px;
+	}
+}
